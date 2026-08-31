@@ -105,7 +105,7 @@ The programs cover topics such as:
 1. Clone this repository:
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_LINK
+git clone https://github.com/Srijani-Guchhait/DSA_Lab
 ```
 
 2. Open the project folder in VS Code.
