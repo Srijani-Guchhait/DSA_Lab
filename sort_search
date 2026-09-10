@@ -1,0 +1,69 @@
+//Sort an array for only one step using bubble sort, next take array inputand performance insertion sort then find an elemnt using linear search
+#include <stdio.h>
+
+void insertionSort(int *arr, int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int binarySearch(int *arr, int n, int x) {
+    int *low = arr;
+    int *high = arr + n - 1;
+
+    while (low <= high) {
+        int *mid = low + (high - low) / 2;
+
+        if (*mid == x) {
+            return (mid - arr);
+        }
+
+        if (*mid < x) {
+            low = mid + 1;
+        } 
+        else {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+void printArray(int *arr, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {38, 2, 16, 91, 5, 23, 72, 12, 56, 8};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 23;
+
+    printf("Original Unsorted Array: \n");
+    printArray(arr, n);
+
+    insertionSort(arr, n);
+
+    printf("\nArray after Insertion Sort: \n");
+    printArray(arr, n);
+
+    int result = binarySearch(arr, n, x);
+
+    printf("\nSearch Result: \n");
+    if (result == -1) {
+        printf("Element %d is not present in the array.\n", x);
+    } else {
+        printf("Element %d is present at index %d.\n", x, result);
+    }
+
+    return 0;
+}
